@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.UmlEditor">
+    <top>
+        <MenuBar prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem fx:id="groupMenuItem" mnemonicParsing="false" text="Group" />
+                        <MenuItem fx:id="unGroupMenuItem" mnemonicParsing="false" text="UnGroup" />
+                        <MenuItem fx:id="changeObjName" mnemonicParsing="false" text="Change object name" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <left>
+        <VBox prefHeight="370.0" prefWidth="130.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="selectBtn" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="select">
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="20.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="ALButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="accociation line">
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="GLButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="generalization line">
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="CLButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="composition line">
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="classButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="class">
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="usecaseButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="142.0" text="usecase">
+                    <VBox.margin>
+                        <Insets bottom="20.0" top="10.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <Canvas fx:id="umlCanvas" height="370.0" width="470.0" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>
