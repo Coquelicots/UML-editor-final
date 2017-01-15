@@ -1,4 +1,4 @@
-package Component;
+package Component.Utility;
 
 
 public class Point {

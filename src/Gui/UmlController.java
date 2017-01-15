@@ -39,7 +39,6 @@ public class UmlController {
         selectBtn.setOnMouseClicked(event -> mode = new SelectMode());
         classButton.setOnMouseClicked(event -> mode = new ClassMode());
         usecaseButton.setOnMouseClicked(event -> mode = new UseCaseMode());
-        umlCanvas.setOnMouseClicked(event -> mode.onClick(event));
         umlCanvas.setOnMousePressed(event -> mode.onPress(event));
         umlCanvas.setOnMouseDragged(event -> mode.onDrag(event));
         umlCanvas.setOnMouseReleased(event -> mode.onRelease(event));

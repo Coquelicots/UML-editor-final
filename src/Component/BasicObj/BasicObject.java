@@ -1,12 +1,15 @@
-package Component;
+package Component.BasicObj;
 
 
+import Component.Utility.Point;
+import Component.Utility.Port;
+import Component.Utility.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BasicObject extends Shape{
+public abstract class BasicObject extends Shape {
     protected Point position;
     protected double height;
     protected double width;
@@ -37,6 +40,16 @@ public abstract class BasicObject extends Shape{
                 &&y>=position.getY()&&y<=position.getY()+height){
             return true;
         }
+        return false;
+    }
+    @Override
+    public boolean isSelect(Point leftUp,Point rightDown) {
+        if(leftUp.getX()<position.getX()&&rightDown.getX()>position.getX()+width
+                &&leftUp.getY()<position.getY()&&rightDown.getY()>position.getY()+height){
+            setSelected(true);
+            return true;
+        }
+        setSelected(false);
         return false;
     }
     public void drawPort(GraphicsContext gc){

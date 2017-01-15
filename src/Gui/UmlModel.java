@@ -1,6 +1,7 @@
 package Gui;
 
-import Component.Shape;
+import Component.Utility.Marquee;
+import Component.Utility.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
@@ -13,10 +14,12 @@ public class UmlModel {
     private List<Shape> shapeList;
     private List<Shape> selectedShapeList;
     private GraphicsContext gc;
+    private Marquee marquee;
     //---Action
     private UmlModel(){
         shapeList = new ArrayList<>();
         selectedShapeList = new ArrayList<>();
+        marquee = new Marquee();
     }
     public static UmlModel getInstance(){
         if(instance == null) {
@@ -38,7 +41,17 @@ public class UmlModel {
             }
         }
     }
-    public void select(double x, double y){
+    public void startSquareSelect(double x,double y){
+        marquee.setStartPoint(x,y);
+        marquee.setActive(true);
+    }
+    public void endSquareSelect(){
+        marquee.setActive(false);
+    }
+    public void drawMarquee(){
+        marquee.draw(gc);
+    }
+    public boolean select(double x, double y){
         int last=-1;
         selectedShapeList.clear();
         for(int i=0;i<shapeList.size();i++){
@@ -50,6 +63,17 @@ public class UmlModel {
         if(last>=0) {
             shapeList.get(last).setSelected(true);
             selectedShapeList.add(shapeList.get(last));
+            return true;
+        }
+        return false;
+    }
+    public void squareSelect(double x, double y){
+        marquee.setEndPoint(x,y);
+        selectedShapeList.clear();
+        for(Shape s :shapeList){
+            if(s.isSelect(marquee.getLeftUpPoint(),marquee.getRightDownPoint())){
+                selectedShapeList.add(s);
+            }
         }
     }
     public void moveSelected(double x, double y){
