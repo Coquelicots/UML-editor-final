@@ -4,10 +4,15 @@ package Component;
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class Shape {
-    protected GraphicsContext gc;
-    public abstract void draw();
+    public abstract void move(double x,double y);
+    public abstract void draw(GraphicsContext gc);
     public abstract boolean isSelect(double x,double y);
-    public Shape (GraphicsContext gc){
-        this.gc = gc;
+    private boolean isSelected = false;
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean select) {
+        isSelected = select;
     }
 }

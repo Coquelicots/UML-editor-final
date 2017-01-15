@@ -3,19 +3,33 @@ package Component;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class BasicObject extends Shape{
     protected Point position;
     protected double height;
     protected double width;
-    protected String name;
-    public void move(double x,double y){
-        position.move(x,y);
-    }
-    public BasicObject(GraphicsContext gc, double x, double y, double width, double height){
-        super(gc);
+    protected List<Port> portList;
+    public BasicObject(double x, double y, double width, double height){
         position = new Point (x,y);
         this.height = height;
         this.width = width;
+        portList = new ArrayList<>();
+        Port p1 = new Port(x+width/2,y);//top port
+        Port p2 = new Port(x+width,y+height/2);//right port
+        Port p3 = new Port(x+width/2,y+height);//bot port
+        Port p4 = new Port(x,y+height/2);//left port
+        portList.add(p1);
+        portList.add(p2);
+        portList.add(p3);
+        portList.add(p4);
+    }
+    public void move(double x,double y){
+        for(Port p:portList){
+            p.move(x-position.getX(),y-position.getY());
+        }
+        position.move(x,y);
     }
     @Override
     public boolean isSelect(double x,double y) {
@@ -24,5 +38,12 @@ public abstract class BasicObject extends Shape{
             return true;
         }
         return false;
+    }
+    public void drawPort(GraphicsContext gc){
+        if(isSelected()) {
+            for (Port p : portList) {
+                p.draw(gc);
+            }
+        }
     }
 }

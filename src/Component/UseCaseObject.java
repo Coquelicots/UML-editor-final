@@ -1,16 +1,19 @@
 package Component;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
-/**
- * Created by Vincent on 1/14/2017.
- */
 public class UseCaseObject extends BasicObject{
-    public UseCaseObject(GraphicsContext gc, double x, double y) {
-        super(gc, x, y, 60, 20);
+    private String name;
+    public UseCaseObject(double x, double y) {
+        super(x, y, 60, 20);
     }
     @Override
-    public void draw() {
-
+    public void draw(GraphicsContext gc) {
+        gc.setFill(Color.WHITE);
+        gc.fillOval(position.getX(),position.getY(),width,height);
+        gc.strokeOval(position.getX(),position.getY(),width,height);
+        drawPort(gc);
+        gc.fillText(name,position.getX()+5,position.getY()+15);
     }
 }
