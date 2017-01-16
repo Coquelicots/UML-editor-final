@@ -46,10 +46,8 @@ public abstract class BasicObject extends Shape {
     public boolean isSelect(Point leftUp,Point rightDown) {
         if(leftUp.getX()<position.getX()&&rightDown.getX()>position.getX()+width
                 &&leftUp.getY()<position.getY()&&rightDown.getY()>position.getY()+height){
-            setSelected(true);
             return true;
         }
-        setSelected(false);
         return false;
     }
     @Override

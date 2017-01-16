@@ -3,6 +3,9 @@ package Component.Utility;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Shape {
     public abstract void move(double x,double y);
     public abstract void draw(GraphicsContext gc);
@@ -17,5 +20,9 @@ public abstract class Shape {
     }
     public Port getPort(double x,double y){return null;}
     public void add(Shape s){}
-    public void remove(Shape s){}
+    public List<Shape> getList(){
+        List<Shape> shapeList = new ArrayList<> (  );
+        shapeList.add ( this );
+        return shapeList;
+    }
 }

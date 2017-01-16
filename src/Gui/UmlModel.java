@@ -76,8 +76,10 @@ public class UmlModel {
         marquee.setEndPoint(x,y);
         selectedShapeList.clear();
         for(Shape s :shapeList){
+            s.setSelected ( false );
             if(s.isSelect(marquee.getLeftUpPoint(),marquee.getRightDownPoint())){
                 selectedShapeList.add(s);
+                s.setSelected ( true );
             }
         }
     }
@@ -103,9 +105,11 @@ public class UmlModel {
             addShape ( g );
         }
     }
-    public void ungroup(){
+    public void unGroup(){
         if(selectedShapeList.size ()==1) {
-
+            removeShape ( selectedShapeList.get ( 0 ) );
+            List<Shape> sList = selectedShapeList.get ( 0 ).getList ();
+            sList.forEach ( this::addShape );
         }
     }
 }

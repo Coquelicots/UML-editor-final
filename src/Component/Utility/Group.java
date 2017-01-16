@@ -48,7 +48,7 @@ public class Group extends Shape{
         for (Shape shape:shapeList){
             shape.setSelected ( true );
         }
-        return false;
+        return true;
     }
     @Override
     public void setSelected(boolean select){
@@ -67,7 +67,7 @@ public class Group extends Shape{
     }
 
     @Override
-    public void remove ( Shape s ) {
-        shapeList.remove ( s );
+    public List<Shape> getList () {
+        return shapeList;
     }
 }

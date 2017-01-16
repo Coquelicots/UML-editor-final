@@ -47,6 +47,12 @@ public class UmlController {
                 UmlModel.getInstance ().groupSelected();
             }
         } );
+        unGroupMenuItem.setOnAction ( new EventHandler<ActionEvent> () {
+            @Override
+            public void handle ( ActionEvent event ) {
+                UmlModel.getInstance ().unGroup ();
+            }
+        } );
         umlCanvas.setOnMousePressed(event -> mode.onPress(event));
         umlCanvas.setOnMouseDragged(event -> mode.onDrag(event));
         umlCanvas.setOnMouseReleased(event -> mode.onRelease(event));
