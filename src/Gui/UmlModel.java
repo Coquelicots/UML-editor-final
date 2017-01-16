@@ -1,5 +1,6 @@
 package Gui;
 
+import Component.Utility.Group;
 import Component.Utility.Marquee;
 import Component.Utility.Port;
 import Component.Utility.Shape;
@@ -33,6 +34,9 @@ public class UmlModel {
     }
     public void addShape(Shape s){
         shapeList.add(s);
+    }
+    public void removeShape(Shape s){
+        shapeList.remove ( s );
     }
     public void print(){
         if(gc!=null) {
@@ -88,5 +92,20 @@ public class UmlModel {
                 return s.getPort ( x,y );
         }
         return null;
+    }
+    public void groupSelected(){
+        if(selectedShapeList.size ()>1) {
+            Group g = new Group ();
+            for ( Shape s : selectedShapeList ) {
+                g.add ( s );
+                removeShape ( s );
+            }
+            addShape ( g );
+        }
+    }
+    public void ungroup(){
+        if(selectedShapeList.size ()==1) {
+
+        }
     }
 }

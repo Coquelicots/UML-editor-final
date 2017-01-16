@@ -20,20 +20,14 @@ public abstract class UmlLine extends Shape {
     public void move(double x, double y) {
         //do nothing
     }
-
     @Override
     public boolean isSelect(double x, double y) {
         // do nothing
         return false;
     }
-
     @Override
     public boolean isSelect(Point leftUp, Point rightDown) {
         // do nothing
         return false;
-    }
-    @Override
-    public Port getPort(double x,double y){
-        return null;
     }
 }

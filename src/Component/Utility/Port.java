@@ -18,7 +18,7 @@ public class Port{
         gc.fillRect(position.getX() - width/2, position.getY() - height/2, width, height);
     }
     public void move(double x,double y){
-        position.move(position.getX()+x,position.getY()+y);
+        position.move(x,y);
     }
     public Point getPosition(){
         return position;

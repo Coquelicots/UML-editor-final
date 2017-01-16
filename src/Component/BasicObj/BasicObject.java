@@ -30,7 +30,7 @@ public abstract class BasicObject extends Shape {
     }
     public void move(double x,double y){
         for(Port p:portList){
-            p.move(x-position.getX(),y-position.getY());
+            p.move(x,y);
         }
         position.move(x,y);
     }

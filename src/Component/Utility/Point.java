@@ -19,6 +19,10 @@ public class Point {
         return y;
     }
     public void move(double x,double y){
+        this.x += x;
+        this.y += y;
+    }
+    public void setPoint(double x,double y){
         this.x = x;
         this.y = y;
     }

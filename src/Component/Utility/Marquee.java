@@ -28,7 +28,7 @@ public class Marquee{
     }
 
     public void setStartPoint(double x, double y) {
-        startPoint.move(x,y);
+        startPoint.setPoint(x,y);
     }
 
     public Point getEndPoint() {
@@ -36,13 +36,13 @@ public class Marquee{
     }
 
     public void setEndPoint(double x, double y) {
-        endPoint.move(x,y);
+        endPoint.setPoint(x,y);
         double x1 = startPoint.getX();
         double y1 = startPoint.getY();
         double x2 = endPoint.getX();
         double y2 = endPoint.getY();
-        leftUpPoint.move(((x1 <= x2) ? x1 : x2), ((y1 <= y2) ? y1 : y2));
-        rightDownPoint.move(((x1 > x2) ? x1 : x2), ((y1 > y2) ? y1 : y2));
+        leftUpPoint.setPoint(((x1 <= x2) ? x1 : x2), ((y1 <= y2) ? y1 : y2));
+        rightDownPoint.setPoint(((x1 > x2) ? x1 : x2), ((y1 > y2) ? y1 : y2));
     }
 
     public Point getLeftUpPoint() {

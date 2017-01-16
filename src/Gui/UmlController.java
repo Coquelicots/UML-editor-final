@@ -1,6 +1,8 @@
 package Gui;
 
 import Behavior.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -39,6 +41,12 @@ public class UmlController {
         ALButton.setOnMouseClicked ( event -> mode = new AssociationLineMode () );
         CLButton.setOnMouseClicked ( event -> mode = new CompositionLineMode () );
         GLButton.setOnMouseClicked ( event -> mode = new GeneralizationLineMode () );
+        groupMenuItem.setOnAction ( new EventHandler<ActionEvent> () {
+            @Override
+            public void handle ( ActionEvent event ) {
+                UmlModel.getInstance ().groupSelected();
+            }
+        } );
         umlCanvas.setOnMousePressed(event -> mode.onPress(event));
         umlCanvas.setOnMouseDragged(event -> mode.onDrag(event));
         umlCanvas.setOnMouseReleased(event -> mode.onRelease(event));
