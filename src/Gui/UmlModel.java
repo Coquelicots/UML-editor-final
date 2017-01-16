@@ -1,9 +1,6 @@
 package Gui;
 
-import Component.Utility.Group;
-import Component.Utility.Marquee;
-import Component.Utility.Port;
-import Component.Utility.Shape;
+import Component.Utility.*;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
@@ -17,11 +14,13 @@ public class UmlModel {
     private List<Shape> selectedShapeList;
     private GraphicsContext gc;
     private Marquee marquee;
+    private PreviewLine previewLine;
     //---Action
     private UmlModel(){
         shapeList = new ArrayList<>();
         selectedShapeList = new ArrayList<>();
         marquee = new Marquee();
+        previewLine = new PreviewLine();
     }
     public static UmlModel getInstance(){
         if(instance == null) {
@@ -116,5 +115,9 @@ public class UmlModel {
         for(Shape s:selectedShapeList){
             s.changeName ( name );
         }
+    }
+    public void drawPreviewLine(Port s,Point e){
+        previewLine.setStartEnd ( s,e );
+        previewLine.draw ( gc );
     }
 }

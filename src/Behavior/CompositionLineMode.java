@@ -1,6 +1,7 @@
 package Behavior;
 
 import Component.UmlLine.CompositionLine;
+import Component.Utility.Point;
 import Component.Utility.Port;
 import Gui.UmlModel;
 import javafx.scene.input.MouseEvent;
@@ -16,7 +17,9 @@ public class CompositionLineMode extends Mode{
 
     @Override
     public void onDrag ( MouseEvent event ) {
-
+        Point e = new Point (event.getX (),event.getY ());
+        UmlModel.getInstance().print();
+        UmlModel.getInstance ().drawPreviewLine(startPort,e);
     }
 
     @Override
