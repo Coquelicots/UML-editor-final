@@ -1,6 +1,7 @@
 package Gui;
 
 import Component.Utility.Marquee;
+import Component.Utility.Port;
 import Component.Utility.Shape;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -80,5 +81,12 @@ public class UmlModel {
         for(Shape s : selectedShapeList){
             s.move(x,y);
         }
+    }
+    public Port getClosePort(double x, double y){
+        for(Shape s:shapeList){
+            if(s.getPort ( x,y )!=null)
+                return s.getPort ( x,y );
+        }
+        return null;
     }
 }

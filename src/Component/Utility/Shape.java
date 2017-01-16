@@ -12,8 +12,8 @@ public abstract class Shape {
     public boolean isSelected() {
         return isSelected;
     }
-
     public void setSelected(boolean select) {
         isSelected = select;
     }
+    public abstract Port getPort(double x,double y);
 }

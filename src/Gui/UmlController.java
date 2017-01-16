@@ -1,9 +1,6 @@
 package Gui;
 
-import Behavior.ClassMode;
-import Behavior.Mode;
-import Behavior.SelectMode;
-import Behavior.UseCaseMode;
+import Behavior.*;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -39,6 +36,9 @@ public class UmlController {
         selectBtn.setOnMouseClicked(event -> mode = new SelectMode());
         classButton.setOnMouseClicked(event -> mode = new ClassMode());
         usecaseButton.setOnMouseClicked(event -> mode = new UseCaseMode());
+        ALButton.setOnMouseClicked ( event -> mode = new AssociationLineMode () );
+        CLButton.setOnMouseClicked ( event -> mode = new CompositionLineMode () );
+        GLButton.setOnMouseClicked ( event -> mode = new GeneralizationLineMode () );
         umlCanvas.setOnMousePressed(event -> mode.onPress(event));
         umlCanvas.setOnMouseDragged(event -> mode.onDrag(event));
         umlCanvas.setOnMouseReleased(event -> mode.onRelease(event));

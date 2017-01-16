@@ -20,4 +20,7 @@ public class Port{
     public void move(double x,double y){
         position.move(position.getX()+x,position.getY()+y);
     }
+    public Point getPosition(){
+        return position;
+    }
 }

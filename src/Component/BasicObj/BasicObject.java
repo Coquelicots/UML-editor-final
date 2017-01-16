@@ -52,6 +52,22 @@ public abstract class BasicObject extends Shape {
         setSelected(false);
         return false;
     }
+    @Override
+    public Port getPort(double x,double y){
+        if(isSelect ( x,y )) {
+            int index = 0;
+            Point p = new Point ( x,y );
+            double distance = p.distance ( portList.get ( index ).getPosition () );
+            for(int i=1;i<portList.size ();i++){
+                if(p.distance ( portList.get ( i ).getPosition () )<distance) {
+                    distance = p.distance ( portList.get ( i ).getPosition () );
+                    index = i;
+                }
+            }
+            return portList.get ( index );
+        }
+        return null;
+    }
     public void drawPort(GraphicsContext gc){
         if(isSelected()) {
             for (Port p : portList) {

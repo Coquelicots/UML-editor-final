@@ -8,11 +8,12 @@ import Component.Utility.Shape;
  * Created by Vincent on 1/15/2017.
  */
 public abstract class UmlLine extends Shape {
-    private Port start;
-    private Port end;
+    protected Port startPort;
+    protected Port endPort;
 
-    public UmlLine(){
-
+    public UmlLine(Port s,Port e){
+        startPort = s;
+        endPort = e;
     }
 
     @Override
@@ -30,5 +31,9 @@ public abstract class UmlLine extends Shape {
     public boolean isSelect(Point leftUp, Point rightDown) {
         // do nothing
         return false;
+    }
+    @Override
+    public Port getPort(double x,double y){
+        return null;
     }
 }

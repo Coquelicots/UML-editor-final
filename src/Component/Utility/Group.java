@@ -23,4 +23,9 @@ public class Group extends Shape{
     public boolean isSelect(Point leftUp, Point rightDown) {
         return false;
     }
+
+    @Override
+    public Port getPort ( double x,double y ) {
+        return null;
+    }
 }
