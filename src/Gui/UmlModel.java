@@ -112,4 +112,9 @@ public class UmlModel {
             sList.forEach ( this::addShape );
         }
     }
+    public void changeName(String name){
+        for(Shape s:selectedShapeList){
+            s.changeName ( name );
+        }
+    }
 }

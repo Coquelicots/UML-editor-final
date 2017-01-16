@@ -4,7 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class ClassObject extends BasicObject{
-    private String name;
+
     public ClassObject(double x, double y) {
         super(x, y, 60, 60);
     }

@@ -25,4 +25,7 @@ public abstract class Shape {
         shapeList.add ( this );
         return shapeList;
     }
+    public void changeName(String name){
+
+    }
 }

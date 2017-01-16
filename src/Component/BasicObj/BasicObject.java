@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BasicObject extends Shape {
+    protected String name;
     protected Point position;
     protected double height;
     protected double width;
@@ -72,5 +73,9 @@ public abstract class BasicObject extends Shape {
                 p.draw(gc);
             }
         }
+    }
+    @Override
+    public void changeName(String name){
+        this.name = name;
     }
 }
