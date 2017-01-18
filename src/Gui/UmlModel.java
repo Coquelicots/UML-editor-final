@@ -4,6 +4,8 @@ import Component.Utility.*;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -15,6 +17,7 @@ public class UmlModel {
     private GraphicsContext gc;
     private Marquee marquee;
     private PreviewLine previewLine;
+    private int depthRecord = 0;
     //---Action
     private UmlModel(){
         shapeList = new ArrayList<>();
@@ -32,12 +35,16 @@ public class UmlModel {
         this.gc = gc;
     }
     public void addShape(Shape s){
+        if(s.getDepth()<0) {
+            s.setDepth(depthRecord++);
+        }
         shapeList.add(s);
     }
     public void removeShape(Shape s){
         shapeList.remove ( s );
     }
     public void print(){
+        sortListByDepth();
         if(gc!=null) {
             gc.clearRect(0, 0, 800, 800);
             for (Shape s : shapeList) {
@@ -96,11 +103,14 @@ public class UmlModel {
     }
     public void groupSelected(){
         if(selectedShapeList.size ()>1) {
+            int greatestDepth = 100;
             Group g = new Group ();
             for ( Shape s : selectedShapeList ) {
                 g.add ( s );
                 removeShape ( s );
+                greatestDepth = (greatestDepth>s.getDepth())?s.getDepth():greatestDepth;
             }
+            g.setDepth(greatestDepth);
             addShape ( g );
         }
     }
@@ -119,5 +129,15 @@ public class UmlModel {
     public void drawPreviewLine(Port s,Point e){
         previewLine.setStartEnd ( s,e );
         previewLine.draw ( gc );
+    }
+    private void sortListByDepth(){
+        Collections.sort(shapeList, new Comparator<Shape>() {
+            @Override
+            public int compare(Shape shape1, Shape shape2)
+            {
+
+                return  shape2.getDepth()-shape1.getDepth();
+            }
+        });
     }
 }

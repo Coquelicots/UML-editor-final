@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Shape {
+    public int depth = -1;
     public abstract void move(double x,double y);
     public abstract void draw(GraphicsContext gc);
     public abstract boolean isSelect(double x,double y);
@@ -27,5 +28,13 @@ public abstract class Shape {
     }
     public void changeName(String name){
 
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public void setDepth(int depth) {
+        this.depth = depth;
     }
 }

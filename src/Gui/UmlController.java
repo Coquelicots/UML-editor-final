@@ -60,18 +60,22 @@ public class UmlController {
         changeObjName.setOnAction ( new EventHandler<ActionEvent> () {
             @Override
             public void handle ( ActionEvent event ) {
-                createNameDialog();
+                String result = createNameDialog("Name","Change Name","Change Name","Name: ");
+                if(result!=null){
+                    UmlModel.getInstance ().changeName ( result );
+                    UmlModel.getInstance ().print ();
+                }
             }
         } );
         umlCanvas.setOnMousePressed(event -> mode.onPress(event));
         umlCanvas.setOnMouseDragged(event -> mode.onDrag(event));
         umlCanvas.setOnMouseReleased(event -> mode.onRelease(event));
     }
-    public void createNameDialog(){
-        final TextInputDialog textInputDialog = new TextInputDialog("Name"); // 實體化TextInputDialog物件，並直接在建構子設定預設的文字內容。由於輸入一定是字串，所以對話框會直接回傳String物件，而不使用泛型
-        textInputDialog.setTitle("Change Name"); //設定對話框視窗的標題列文字
-        textInputDialog.setHeaderText("Change Name"); //設定對話框視窗裡的標頭文字。若設為空字串，則表示無標頭
-        textInputDialog.setContentText("Name: "); //設定對話框的訊息文字
+    public String createNameDialog(String preText,String title,String Header,String Content){
+        final TextInputDialog textInputDialog = new TextInputDialog(preText); // 實體化TextInputDialog物件，並直接在建構子設定預設的文字內容。由於輸入一定是字串，所以對話框會直接回傳String物件，而不使用泛型
+        textInputDialog.setTitle(title); //設定對話框視窗的標題列文字
+        textInputDialog.setHeaderText(Header); //設定對話框視窗裡的標頭文字。若設為空字串，則表示無標頭
+        textInputDialog.setContentText(Content); //設定對話框的訊息文字
         final Optional<String> opt = textInputDialog.showAndWait(); //顯示對話框，並等待對話框被關閉時才繼續執行之後的程式。
         String rtn;
         try{
@@ -79,9 +83,6 @@ public class UmlController {
         }catch(final NoSuchElementException ex){
             rtn = null;
         }
-        if(rtn!=null){
-            UmlModel.getInstance ().changeName ( rtn );
-            UmlModel.getInstance ().print ();
-        }
+        return rtn;
     }
 }

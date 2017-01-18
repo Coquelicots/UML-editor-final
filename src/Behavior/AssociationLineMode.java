@@ -7,22 +7,7 @@ import Component.Utility.PreviewLine;
 import Gui.UmlModel;
 import javafx.scene.input.MouseEvent;
 
-public class AssociationLineMode extends Mode{
-    private Port startPort;
-    private Port endPort;
-    private PreviewLine previewLine;
-    @Override
-    public void onPress ( MouseEvent event ) {
-        startPort = UmlModel.getInstance ().getClosePort(event.getX (),event.getY ());
-
-    }
-
-    @Override
-    public void onDrag ( MouseEvent event ) {
-        Point e = new Point (event.getX (),event.getY ());
-        UmlModel.getInstance().print();
-        UmlModel.getInstance ().drawPreviewLine(startPort,e);
-    }
+public class AssociationLineMode extends LineMode{
 
     @Override
     public void onRelease ( MouseEvent event ) {

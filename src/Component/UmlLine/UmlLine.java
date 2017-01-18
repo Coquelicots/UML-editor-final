@@ -4,9 +4,6 @@ import Component.Utility.Point;
 import Component.Utility.Port;
 import Component.Utility.Shape;
 
-/**
- * Created by Vincent on 1/15/2017.
- */
 public abstract class UmlLine extends Shape {
     protected Port startPort;
     protected Port endPort;
